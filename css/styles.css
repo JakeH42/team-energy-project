@@ -1,4 +1,50 @@
-/* Add margin to card group*/
+body, html {
+    height: 100%;  
+}
+
+h1 {
+    color: #fff;
+}
+  
+.bg { 
+    /* The image used */
+    background-image: url(../images/cosmos-background.jpeg);
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .task-group {
     margin-top: 20px;
 }
+
+.list-group-item {
+    /* From https://css.glass */
+    background: rgba(29, 29, 29, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.8px);
+    -webkit-backdrop-filter: blur(3.8px);
+    border: 1px solid rgba(29, 29, 29, 0.5);
+    margin-bottom: 10px;
+}
+
+.assign-task,
+.task-due-date {
+    font-weight: bold;
+}
+
+.assign-task span,
+.task-due-date span{
+    font-weight: 300;
+}
+
+.list-group-item .task-title, 
+.list-group-item .assign-task,
+.list-group-item .task-due-date,
+.list-group-item label {
+    color: #fff;
+}
+
+
