@@ -24,58 +24,10 @@
         </div>
 
         <div class="row">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" id="add-task-button" data-toggle="modal" data-target="#staticBackdrop">
+            <!-- Button To Trigger Add Task Modal -->
+            <button type="button" class="btn btn-primary" id="add-task-button" data-toggle="modal" data-target="#add-task-modal">
                 ADD TASK +
             </button>
-        </div>
-    
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Add New Task</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="task-title">Task Title</label>
-                            <input type="text" class="form-control" id="task-title" placeholder="Enter Title">
-                        </div>
-                        <div class="form-group">
-                            <label for="task-description">Description</label>
-                            <textarea class="form-control" id="task-description" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="task-assignee">Asign To</label>
-                            <input type="text" class="form-control" id="task-assignee" placeholder="Enter Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="task-due-date">Due Date</label>
-                            <input type="date" class="form-control" id="task-due-date" placeholder="dd/mm/yyyy">
-                        </div>
-                        <div class="form-group">
-                            <label for="task-status">Status</label>
-                            <select class="form-control" id="task-status">
-                                <option value="" disabled selected>Select status</option>
-                                <option>To Do</option>
-                                <option>Review</option>
-                                <option>In Progress</option>
-                                <option>Done</option>
-                            </select>
-                        </div>
-                    </form>    
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm">Reset</button>
-                <button type="button" class="btn btn-primary">Submit Task</button>
-                </div>
-            </div>
-            </div>
         </div>
 
         <div class="row task-group">
@@ -88,7 +40,7 @@
                                 <div class="assign-task">Assign to: <span class="assignee-name">Lucas</span></div>
                                 <div class="task-due-date">Due Date: <span class="date-due">15/01/2022</span></div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 card-status">
                                 <form>
                                     <div class="form-group">
                                         <label for="task-status">Status</label>
@@ -101,7 +53,7 @@
                                         </select>
                                     </div>
                                 </form>
-                                <button type="button" class="btn btn-info btn-sm"><i class="bi-pencil"></i> Edit</button>
+                                <button type="button" class="btn btn-info btn-sm" id="edit-task-button" data-toggle="modal" data-target="#edit-task-modal"><i class="bi-pencil"></i> Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm"><i class="bi-trash"></i> Delete</button>
                             </div>
                         </div>
@@ -127,7 +79,7 @@
                                 <div class="assign-task">Assign to: <span class="assignee-name">Robert</span></div>
                                 <div class="task-due-date">Due Date: <span class="date-due">22/12/2021</span></div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 card-status">
                                 <form>
                                     <div class="form-group">
                                         <label for="task-status">Status</label>
@@ -140,7 +92,7 @@
                                         </select>
                                     </div>
                                 </form>
-                                <button type="button" class="btn btn-info btn-sm"><i class="bi-pencil"></i> Edit</button>
+                                <button type="button" class="btn btn-info btn-sm" id="edit-task-button" data-toggle="modal" data-target="#edit-task-modal"><i class="bi-pencil"></i> Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm"><i class="bi-trash"></i> Delete</button>
                             </div>
                         </div>
@@ -166,7 +118,7 @@
                                 <div class="assign-task">Assign to: <span class="assignee-name">Jake</span></div>
                                 <div class="task-due-date">Due Date: <span class="date-due">12/01/2022</span></div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 card-status">
                                 <form>
                                     <div class="form-group">
                                         <label for="task-status">Status</label>
@@ -179,7 +131,7 @@
                                         </select>
                                     </div>
                                 </form>
-                                <button type="button" class="btn btn-info btn-sm"><i class="bi-pencil"></i> Edit</button>
+                                <button type="button" class="btn btn-info btn-sm" id="edit-task-button" data-toggle="modal" data-target="#edit-task-modal"><i class="bi-pencil"></i> Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm"><i class="bi-trash"></i> Delete</button>
                             </div>
                         </div>
@@ -205,7 +157,7 @@
                                 <div class="assign-task">Assign to: <span class="assignee-name">Lucas</span></div>
                                 <div class="task-due-date">Due Date: <span class="date-due">01/01/2022</span></div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 card-status">
                                 <form>
                                     <div class="form-group">
                                         <label for="task-status">Status</label>
@@ -218,7 +170,7 @@
                                         </select>
                                     </div>
                                 </form>
-                                <button type="button" class="btn btn-info btn-sm"><i class="bi-pencil"></i> Edit</button>
+                                <button type="button" class="btn btn-info btn-sm" id="edit-task-button" data-toggle="modal" data-target="#edit-task-modal"><i class="bi-pencil"></i> Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm"><i class="bi-trash"></i> Delete</button>
                             </div>
                         </div>
@@ -244,7 +196,7 @@
                                 <div class="assign-task">Assign to: <span class="assignee-name">Lucas</span></div>
                                 <div class="task-due-date">Due Date: <span class="date-due">19/01/2022</span></div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 card-status">
                                 <form>
                                     <div class="form-group">
                                         <label for="task-status">Status</label>
@@ -257,7 +209,7 @@
                                         </select>
                                     </div>
                                 </form>
-                                <button type="button" class="btn btn-info btn-sm"><i class="bi-pencil"></i> Edit</button>
+                                <button type="button" class="btn btn-info btn-sm" id="edit-task-button" data-toggle="modal" data-target="#edit-task-modal"><i class="bi-pencil"></i> Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm"><i class="bi-trash"></i> Delete</button>
                             </div>
                         </div>
@@ -279,6 +231,103 @@
                 </ul>
             </div>
         </div>
+
+        <!--Add Task Modal -->
+        <div class="modal fade" id="add-task-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add New Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="task-title">Task Title</label>
+                                <input type="text" class="form-control" id="task-title" placeholder="Enter Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-description">Description</label>
+                                <textarea class="form-control" id="task-description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-assignee">Asign To</label>
+                                <input type="text" class="form-control" id="task-assignee" placeholder="Enter Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-due-date">Due Date</label>
+                                <input type="date" class="form-control" id="task-due-date" placeholder="dd/mm/yyyy">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-status">Status</label>
+                                <select class="form-control" id="task-status">
+                                    <option value="" disabled selected>Select status</option>
+                                    <option>To Do</option>
+                                    <option>Review</option>
+                                    <option>In Progress</option>
+                                    <option>Done</option>
+                                </select>
+                            </div>
+                        </form>    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm">Reset</button>
+                    <button type="button" class="btn btn-primary">Submit Task</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Add Task Modal -->
+        <div class="modal fade" id="edit-task-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="edit-task-title">(Edit) Task Title</label>
+                                <input type="text" class="form-control" id="edit-task-title" placeholder="Edit Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-task-description">(Edit) Description</label>
+                                <textarea class="form-control" id="edit-task-description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-task-assignee">(Edit) Asign To</label>
+                                <input type="text" class="form-control" id="edit-task-assignee" placeholder="Edit Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-task-due-date">(Edit) Due Date</label>
+                                <input type="date" class="form-control" id="edit-task-due-date" placeholder="dd/mm/yyyy">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-task-status">(Edit) Status</label>
+                                <select class="form-control" id="edit-task-status">
+                                    <option value="" disabled selected>Select status</option>
+                                    <option>To Do</option>
+                                    <option>Review</option>
+                                    <option>In Progress</option>
+                                    <option>Done</option>
+                                </select>
+                            </div>
+                        </form>    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm">Reset</button>
+                    <button type="button" class="btn btn-primary">Submit Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div> 
   </div>
     <!-- Optional JavaScript -->
