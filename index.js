@@ -4,10 +4,8 @@ let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 let yyyy = today.getFullYear();
 
-today = 'Today\'s Date: ' + mm + '/' + dd + '/' + yyyy;
+today = 'Today\'s Date: ' + dd + '/' + mm + '/' + yyyy;
 dateElement.innerText = today;
-// const currentDate = 
-// dateElement.addText(``);
 
 const validFormFieldInput = (data) => {
     const taskTitle = document.querySelector('#task-title');
