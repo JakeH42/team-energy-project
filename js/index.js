@@ -60,17 +60,24 @@ const validFormFieldInput = (data) => {
         dueDateError.innerText = '';
     }
 
+    const selectStatus = document.querySelector('#task-status');
+    let selectStatusValue = selectStatus.options[selectStatus.selectedIndex].value;
+    //let selectStatusText = selectStatus.options[selectStatus.selectedIndex].text;
     const statusError = document.querySelector('#task-status-invalid');
-    const defaultOption = document.querySelector('#default-option').value;
     
-    if(defaultOption === ''){
-        taskStatus.classList.add("is-invalid");
-        taskStatus.classList.remove("is-valid");
+    //USE THIS TO GO THROUGH THE OPTIONS!!!!!!
+    document.querySelector('#task-status').options[1].value
+    
+    if(selectStatusValue === ''){
+        console.log('select is NOT fine')
+        selectStatus.classList.add("is-invalid");
+        selectStatus.classList.remove("is-valid");
         statusError.style.display = 'block';
         statusError.innerText = 'Status required';
-    } else {
-        taskStatus.classList.add("is-valid");
-        taskStatus.classList.remove("is-invalid");
+    } else if(selectStatusValue !== '') {
+        console.log('select is fine')
+        selectStatus.classList.add("is-valid");
+        selectStatus.classList.remove("is-invalid");
         statusError.innerText = '';
     }
 
@@ -98,5 +105,8 @@ const validFormFieldInput = (data) => {
 
 const submitButton = document.querySelector('#submit-task-button');
 submitButton.addEventListener("click", validFormFieldInput);
+
+let taskManagerClass = new TaskManager;
+//console.log(taskManagerClass.tasks);
 
 
