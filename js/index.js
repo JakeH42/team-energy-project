@@ -1,3 +1,5 @@
+let taskManagerClass = new TaskManager;
+
 const dateElement = document.querySelector('#current-date');
 let today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
@@ -7,6 +9,9 @@ let yyyy = today.getFullYear();
 today = 'Today\'s Date: ' + dd + '/' + mm + '/' + yyyy;
 dateElement.innerText = today;
 
+const submitButton = document.querySelector('#submit-task-button');
+let numOfErrors = 0;
+
 const validFormFieldInput = (data) => {
     const taskTitle = document.querySelector('#task-title');
     const taskDesc = document.querySelector('#task-description');
@@ -14,13 +19,14 @@ const validFormFieldInput = (data) => {
     const taskDueDate = document.querySelector('#task-due-date');
     const taskStatus = document.querySelector('#task-status');
 
-    console.log(`Title: ${taskTitle.value}, Desc: ${taskDesc.value}, Assignee: ${assignTo.value}, Due Date: ${taskDueDate.value}, Status: ${taskStatus.value}`)
+    //console.log(`Title: ${taskTitle.value}, Desc: ${taskDesc.value}, Assignee: ${assignTo.value}, Due Date: ${taskDueDate.value}, Status: ${taskStatus.value}`)
 
     const titleError = document.querySelector('#task-title-invalid');
     if(taskTitle.value.length <= 5) {
         taskTitle.classList.add("is-invalid");
         taskTitle.classList.remove("is-valid");
         titleError.innerText = 'Title requires more than 5 characters';
+        numOfErrors++
     } else {
         taskTitle.classList.add("is-valid");
         taskTitle.classList.remove("is-invalid");
@@ -32,6 +38,7 @@ const validFormFieldInput = (data) => {
         taskDesc.classList.add("is-invalid");
         taskDesc.classList.remove("is-valid");
         descError.innerText = 'Description requires more than 5 characters';
+        numOfErrors++
     } else {
         taskDesc.classList.add("is-valid");
         taskDesc.classList.remove("is-invalid");
@@ -43,6 +50,7 @@ const validFormFieldInput = (data) => {
         assignTo.classList.add("is-invalid");
         assignTo.classList.remove("is-valid");
         assigneeError.innerText = 'Assignee requires more than 5 characters';
+        numOfErrors++
     } else {
         assignTo.classList.add("is-valid");
         assignTo.classList.remove("is-invalid");
@@ -54,59 +62,46 @@ const validFormFieldInput = (data) => {
         taskDueDate.classList.add("is-invalid");
         taskDueDate.classList.remove("is-valid");
         dueDateError.innerText = 'Date required';
+        numOfErrors++
     } else if(taskDueDate.value.length === 10) {
         taskDueDate.classList.add("is-valid");
         taskDueDate.classList.remove("is-invalid");
         dueDateError.innerText = '';
     }
 
-    const selectStatus = document.querySelector('#task-status');
-    let selectStatusValue = selectStatus.options[selectStatus.selectedIndex].value;
-    //let selectStatusText = selectStatus.options[selectStatus.selectedIndex].text;
-    const statusError = document.querySelector('#task-status-invalid');
+    // const selectStatus = document.querySelector('#task-status');
+    // let selectStatusValue = selectStatus.options[selectStatus.selectedIndex].value;
+    // //let selectStatusText = selectStatus.options[selectStatus.selectedIndex].text;
+    // const statusError = document.querySelector('#task-status-invalid');
     
-    //USE THIS TO GO THROUGH THE OPTIONS!!!!!!
-    document.querySelector('#task-status').options[1].value
+    // //USE THIS TO GO THROUGH THE OPTIONS!!!!!!
+    // document.querySelector('#task-status').options[1].value
     
-    if(selectStatusValue === ''){
-        console.log('select is NOT fine')
-        selectStatus.classList.add("is-invalid");
-        selectStatus.classList.remove("is-valid");
-        statusError.style.display = 'block';
-        statusError.innerText = 'Status required';
-    } else if(selectStatusValue !== '') {
-        console.log('select is fine')
-        selectStatus.classList.add("is-valid");
-        selectStatus.classList.remove("is-invalid");
-        statusError.innerText = '';
-    }
+    // if(selectStatusValue === ''){
+    //     console.log('select is NOT fine')
+    //     selectStatus.classList.add("is-invalid");
+    //     selectStatus.classList.remove("is-valid");
+    //     statusError.style.display = 'block';
+    //     statusError.innerText = 'Status required';
+    // } else if(selectStatusValue !== '') {
+    //     console.log('select is fine')
+    //     selectStatus.classList.add("is-valid");
+    //     selectStatus.classList.remove("is-invalid");
+    //     statusError.innerText = '';
+    // }
 
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict'
-    
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-    
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-    
-            form.classList.add('was-validated')
-            }, false)
-        })
-    })()
+    if(numOfErrors === 0) {
+        submitButton.addEventListener('submit', taskManagerClass.addTask(taskTitle.value, taskDesc.value, assignTo.value, taskDueDate.value, taskStatus.value) )
+    }
 }
 
-const submitButton = document.querySelector('#submit-task-button');
 submitButton.addEventListener("click", validFormFieldInput);
 
-let taskManagerClass = new TaskManager;
+
 //console.log(taskManagerClass.tasks);
+// taskManagerClass.addTask('Add Bacon', 'hdjgjehfjvnsnfbsnfnsnf', 'Lucas', '01/06/2022', 'In Progress');
+// taskManagerClass.addTask('Add Beef', 'poiuytrewq', 'Robert', '01/09/2022', 'Done');
+//console.log(taskManagerClass.tasks);
+
 
 

@@ -9,7 +9,6 @@ class TaskManager {
 
     addTask(name, description, assignedTo, dueDate, status) {
         
-
         let task = {
             id: this.currentId++,
             name: name,
@@ -20,8 +19,5 @@ class TaskManager {
         }
 
         this.tasks.push({task});
-    }
-
-    
+    } 
 }
-
