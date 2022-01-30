@@ -11,6 +11,7 @@ let createTaskHtml = (name, description, assignedTo, dueDate, status) => {
                 <form>
                     <div class="form-group">
                         <label for="task-status">Status</label>
+                        <p>${status}</p>
                         <select class="form-control" id="cardTaskStatus">
                             <option disabled value="">Select status</option>
                             <option value="to do">To Do</option>
@@ -70,9 +71,10 @@ class TaskManager {
 
         let taskNumber = this.tasks.length;
         for(let task = 0; task < taskNumber; task++ ) {
-            let currentTask = this.tasks[task];
+            const currentTask = this.tasks[task];
             const date = new Date(task.dueDate);
             const formattedDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
             const taskHtml = createTaskHtml(
                 currentTask.name,
                 currentTask.description,
@@ -80,6 +82,7 @@ class TaskManager {
                 formattedDate,
                 currentTask.status
             );
+            
             tasksHtmlList.push(taskHtml);
         }
 
