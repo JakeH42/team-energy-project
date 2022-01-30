@@ -36,8 +36,8 @@
 
         <div class="row task-group">
             <div class="col-12 col-md-8">
-                <ul class="list-group">
-                    <li class="list-group-item">
+                <ul id="input-added-task" class="list-group">
+                    <!-- <li class="list-group-item">
                         <div class="row">
                             <div class="col-8">
                                 <h3 class="task-title">Buy Beef Patties</h3>
@@ -231,10 +231,12 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
+        
+        <div class="row">
 
         <!--Add Task Modal -->
         <div class="modal fade" id="add-task-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -269,27 +271,28 @@
                                 <div class="invalid-feedback" id="task-due-date-invalid"></div>
                             </div>
                             <div class="form-group">
-                                <label for="task-status">Status</label>
-                                <select class="form-control" id="task-status" required>
-                                    <option id="default-option" value="" disabled selected>Select status</option>
+                                <label for="selectTaskStatus">Status</label>  
+                                <select class="form-control" id="selectTaskStatus" required> 
+                                    <option selected disabled value="">Select status</option>
                                     <option value="to do">To Do</option>
                                     <option value="review">Review</option>
                                     <option value="in progress">In Progress</option>
-                                    <option value="done">Done</option>
-                                </select>
+                                    <option value="done">Done</option> 
+                                </select> 
                                 <div class="invalid-feedback" id="task-status-invalid"></div>
                             </div>
                         </form>    
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm">Reset</button>
-                    <button type="button" class="btn btn-primary" id="submit-task-button">Submit Task</button>
+                        <div id="submitted"></div>
+                        <button type="button" class="btn btn-secondary btn-sm">Reset</button>
+                        <button type="button" class="btn btn-primary" id="submit-task-button">Submit Task</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--Add Task Modal -->
+        <!--Edit Task Modal -->
         <div class="modal fade" id="edit-task-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

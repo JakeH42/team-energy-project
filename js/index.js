@@ -9,17 +9,20 @@ let yyyy = today.getFullYear();
 today = 'Today\'s Date: ' + dd + '/' + mm + '/' + yyyy;
 dateElement.innerText = today;
 
+const taskTitle = document.querySelector('#task-title');
+const taskDesc = document.querySelector('#task-description');
+const assignTo = document.querySelector('#task-assignee');
+const taskDueDate = document.querySelector('#task-due-date');
+const taskStatus = document.querySelector('#selectTaskStatus');
 const submitButton = document.querySelector('#submit-task-button');
-let numOfErrors = 0;
 
 const validFormFieldInput = (data) => {
-    const taskTitle = document.querySelector('#task-title');
-    const taskDesc = document.querySelector('#task-description');
-    const assignTo = document.querySelector('#task-assignee');
-    const taskDueDate = document.querySelector('#task-due-date');
-    const taskStatus = document.querySelector('#task-status');
 
-    //console.log(`Title: ${taskTitle.value}, Desc: ${taskDesc.value}, Assignee: ${assignTo.value}, Due Date: ${taskDueDate.value}, Status: ${taskStatus.value}`)
+    let numOfErrors = 0;
+
+    data.preventDefault();
+
+    // console.log(`Title: ${taskTitle.value}, Desc: ${taskDesc.value}, Assignee: ${assignTo.value}, Due Date: ${taskDueDate.value}, Status: ${taskStatus.value}`)
 
     const titleError = document.querySelector('#task-title-invalid');
     if(taskTitle.value.length <= 5) {
@@ -69,36 +72,61 @@ const validFormFieldInput = (data) => {
         dueDateError.innerText = '';
     }
 
-    // const selectStatus = document.querySelector('#task-status');
-    // let selectStatusValue = selectStatus.options[selectStatus.selectedIndex].value;
-    // //let selectStatusText = selectStatus.options[selectStatus.selectedIndex].text;
-    // const statusError = document.querySelector('#task-status-invalid');
-    
-    // //USE THIS TO GO THROUGH THE OPTIONS!!!!!!
-    // document.querySelector('#task-status').options[1].value
-    
-    // if(selectStatusValue === ''){
-    //     console.log('select is NOT fine')
-    //     selectStatus.classList.add("is-invalid");
-    //     selectStatus.classList.remove("is-valid");
-    //     statusError.style.display = 'block';
-    //     statusError.innerText = 'Status required';
-    // } else if(selectStatusValue !== '') {
-    //     console.log('select is fine')
-    //     selectStatus.classList.add("is-valid");
-    //     selectStatus.classList.remove("is-invalid");
-    //     statusError.innerText = '';
-    // }
+    const oSel = document.getElementById("selectTaskStatus")
 
+    oSel.addEventListener('change',function(e){
+        let value = this.value;
+    })
+
+    let optval = oSel.options[oSel.options.selectedIndex].value;
+    const statusError = document.querySelector('#task-status-invalid');
+    if(optval === '') {
+        taskStatus.classList.add("is-invalid");
+        taskStatus.classList.remove("is-valid");
+        statusError.style.display = 'block';
+        statusError.innerText = 'Status required';
+        numOfErrors++
+    } else if(optval !== '') {
+        taskStatus.classList.add("is-valid");
+        taskStatus.classList.remove("is-invalid");
+        statusError.innerText = '';
+    }
+
+    
     if(numOfErrors === 0) {
-        submitButton.addEventListener('submit', taskManagerClass.addTask(taskTitle.value, taskDesc.value, assignTo.value, taskDueDate.value, taskStatus.value) )
+        taskManagerClass.addTask(taskTitle.value, taskDesc.value, assignTo.value, taskDueDate.value, taskStatus.value);
+        taskManagerClass.render();
+        let submittedSuccess = document.getElementById('submitted');
+        submittedSuccess.innerHTML = 'Task Submitted <i class="bi bi-check-circle"></i>';
+        
+        taskTitle.value = '';
+        taskDesc.value = '';
+        assignTo.value = '';
+        taskDueDate.value = '';
+        taskStatus.value = '';
+        submitButton.value = '';
+        // submitButton.addEventListener("submit", removeSubmittedText)
+
+        // let removeSubmittedText = () => {
+        //     setTimeout(functionToDisappearInnerHTML(), 3000);
+        // }
+        
+        // let functionToDisappearInnerHTML = () => {
+        //     document.getElementById("submitted").innerHTML = ''; //Clears the innerHTML
+        // }
+        // console.log(taskManagerClass.tasks);
+    } else if(numOfErrors > 0) {
+        // console.log('Errors')
+        return; // Returns nothing
     }
 }
 
 submitButton.addEventListener("click", validFormFieldInput);
 
 
-//console.log(taskManagerClass.tasks);
+// let taskHTML = createTaskHtml('Add Bacon', 'This is the description', 'Lucas', '01/06/2022', 'In Progress');
+// console.log(taskHTML);
+// console.log(taskManagerClass.tasks);
 // taskManagerClass.addTask('Add Bacon', 'hdjgjehfjvnsnfbsnfnsnf', 'Lucas', '01/06/2022', 'In Progress');
 // taskManagerClass.addTask('Add Beef', 'poiuytrewq', 'Robert', '01/09/2022', 'Done');
 //console.log(taskManagerClass.tasks);
