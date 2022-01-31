@@ -123,6 +123,15 @@ const validFormFieldInput = (data) => {
 
 submitButton.addEventListener("click", validFormFieldInput);
 
+let taskListContainer = document.querySelector('#input-added-task');
+
+taskListContainer.addEventListener('click', (event) => {
+    if(event.target.classList.contains('done-button')) {
+        let parentTask = event.target.parentElement.parentElement.parentElement.parentElement;
+        console.log(parentTask);
+    }
+});
+
 
 // let taskHTML = createTaskHtml('Add Bacon', 'This is the description', 'Lucas', '01/06/2022', 'In Progress');
 // console.log(taskHTML);
