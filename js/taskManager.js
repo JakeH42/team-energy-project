@@ -12,7 +12,7 @@ let createTaskHtml = (name, description, assignedTo, dueDate, status, descId, id
                     <div class="current-task-status">${status}</div>
                 </div>
                 <div class="row">
-                    <button type="button" class="btn btn-success btn-block done-button"><i class="bi bi-check-circle"></i> Done</button>
+                    <button type="button" class="btn btn-success btn-block done-button"><i class="bi bi-check-circle"></i> Mark as Done</button>
                 </div>
                 <div class="row">
                     <button type="button" class="btn btn-info btn-sm" id="edit-task-button" data-toggle="modal" data-target="#edit-task-modal"><i class="bi-pencil"></i> Edit</button>
@@ -64,6 +64,8 @@ class TaskManager {
     render() {
         let tasksHtmlList = [];
 
+        // this.tasks.map
+
         let taskNumber = this.tasks.length;
         for(let task = 0; task < taskNumber; task++ ) {
             const currentTask = this.tasks[task];
@@ -80,7 +82,6 @@ class TaskManager {
                 descriptionId,
                 taskId
             );
-            
             tasksHtmlList.push(taskHtml);
         }
 
@@ -92,17 +93,16 @@ class TaskManager {
 
     getTaskById(taskId) {
         let foundTask;
-
         let taskNumber = this.tasks.length;
-        for(let i = 0; i < taskNumber; i++ ) {
-            const currentTask = this.tasks[i];
-            const currentTaskId = currentTask.i.id;
-            if(currentTaskId === taskId) {
+        for(let thisTask = 0; thisTask < taskNumber; thisTask++ ) {
+            const currentTask = this.tasks[thisTask];
+            console.log('Current Task: ', currentTask);
+            const currentTaskId = currentTask.task.id;
+            if(taskId === currentTaskId) {
                 foundTask = currentTask;
-            }
-
-            return foundTask;
+            } 
         }
+        return foundTask;
     }
 }
 

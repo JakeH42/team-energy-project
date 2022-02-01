@@ -17,21 +17,22 @@
     <title>Team Energy - Project</title>
   </head>
   <body>
-  <div class="bg"> 
     <div class="container">
-        <div class="row"> 
-            <h1>My To Do List</h1>
+        <div class="row" id="top-row">
+            <div class="col-6">
+                <h1>My To Do List</h1>
+            </div>
+
+            <div class="col-6">
+                <!-- Button To Trigger Add Task Modal -->
+                <button type="button" class="btn btn-primary" id="add-task-button" data-toggle="modal" data-target="#add-task-modal">
+                    ADD TASK +
+                </button>
+            </div>
         </div>
 
-        <div class="row"> 
+        <div class="row" id="date-row"> 
             <span id="current-date"></span>
-        </div>
-
-        <div class="row">
-            <!-- Button To Trigger Add Task Modal -->
-            <button type="button" class="btn btn-primary" id="add-task-button" data-toggle="modal" data-target="#add-task-modal">
-                ADD TASK +
-            </button>
         </div>
 
         <div class="row task-group">
@@ -55,7 +56,7 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate>
+                        <form class="needs-validation" id="task-form" novalidate>
                             <div class="form-group">
                                 <label for="task-title">Task Title</label>
                                 <input type="text" class="form-control" id="task-title" placeholder="Enter Title" >
@@ -147,7 +148,6 @@
         </div>
 
     </div> 
-  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

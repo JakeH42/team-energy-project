@@ -22,8 +22,6 @@ const validFormFieldInput = (data) => {
 
     data.preventDefault();
 
-    // console.log(`Title: ${taskTitle.value}, Desc: ${taskDesc.value}, Assignee: ${assignTo.value}, Due Date: ${taskDueDate.value}, Status: ${taskStatus.value}`)
-
     const titleError = document.querySelector('#task-title-invalid');
     if(taskTitle.value.length <= 5) {
         taskTitle.classList.add("is-invalid");
@@ -105,18 +103,12 @@ const validFormFieldInput = (data) => {
         taskDueDate.value = '';
         taskStatus.value = '';
         submitButton.value = '';
-        // submitButton.addEventListener("submit", removeSubmittedText)
-
-        // let removeSubmittedText = () => {
-        //     setTimeout(functionToDisappearInnerHTML(), 3000);
-        // }
-        
-        // let functionToDisappearInnerHTML = () => {
-        //     document.getElementById("submitted").innerHTML = ''; //Clears the innerHTML
-        // }
-        // console.log(taskManagerClass.tasks);
+        taskTitle.classList.remove("is-valid");
+        taskDesc.classList.remove("is-valid");
+        assignTo.classList.remove("is-valid");
+        taskDueDate.classList.remove("is-valid");
+        taskStatus.classList.remove("is-valid");
     } else if(numOfErrors > 0) {
-        // console.log('Errors')
         return; // Returns nothing
     }
 }
@@ -126,9 +118,16 @@ submitButton.addEventListener("click", validFormFieldInput);
 let taskListContainer = document.querySelector('#input-added-task');
 
 taskListContainer.addEventListener('click', (event) => {
+    console.log(event.target)
     if(event.target.classList.contains('done-button')) {
-        let parentTask = event.target.parentElement.parentElement.parentElement.parentElement;
-        console.log(parentTask);
+        console.log('Inside if')
+        let taskParentElement = event.target.parentElement.parentElement.parentElement.parentElement;
+        const taskId = Number(taskParentElement.dataset.taskId);
+        console.log(taskId);
+        let task = taskManagerClass.getTaskById(taskId);
+        console.log(task);
+        task.task.status = 'done';
+        taskManagerClass.render();
     }
 });
 
