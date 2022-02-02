@@ -82,6 +82,10 @@ body {
     margin-right: 5px;
 }
 
+div.remove {
+    display: none;
+}
+
 /* Overide Bootstrap Buttons */
 
 /* primary button */

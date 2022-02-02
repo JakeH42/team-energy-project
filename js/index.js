@@ -1,4 +1,6 @@
 let taskManagerClass = new TaskManager;
+taskManagerClass.load();
+taskManagerClass.render();
 
 const dateElement = document.querySelector('#current-date');
 let today = new Date();
@@ -15,6 +17,16 @@ const assignTo = document.querySelector('#task-assignee');
 const taskDueDate = document.querySelector('#task-due-date');
 const taskStatus = document.querySelector('#selectTaskStatus');
 const submitButton = document.querySelector('#submit-task-button');
+
+const removeNotification = () => {
+    let submittedSuccess = document.getElementById('submitted');
+    submittedSuccess.classList.add("remove");
+};
+const removeNotificationClass = () => {
+    let submittedSuccess = document.getElementById('submitted');
+    submittedSuccess.classList.remove("remove");
+    submittedSuccess.innerHTML = '';
+};
 
 const validFormFieldInput = (data) => {
 
@@ -93,10 +105,13 @@ const validFormFieldInput = (data) => {
     
     if(numOfErrors === 0) {
         taskManagerClass.addTask(taskTitle.value, taskDesc.value, assignTo.value, taskDueDate.value, taskStatus.value);
+        taskManagerClass.save();
         taskManagerClass.render();
         let submittedSuccess = document.getElementById('submitted');
         submittedSuccess.innerHTML = 'Task Submitted <i class="bi bi-check-circle"></i>';
-        
+        setTimeout(removeNotification, 3000)
+        setTimeout(removeNotificationClass, 6000)
+
         taskTitle.value = '';
         taskDesc.value = '';
         assignTo.value = '';
@@ -118,19 +133,23 @@ submitButton.addEventListener("click", validFormFieldInput);
 let taskListContainer = document.querySelector('#input-added-task');
 
 taskListContainer.addEventListener('click', (event) => {
-    console.log(event.target)
     if(event.target.classList.contains('done-button')) {
-        console.log('Inside if')
         let taskParentElement = event.target.parentElement.parentElement.parentElement.parentElement;
         const taskId = Number(taskParentElement.dataset.taskId);
-        console.log(taskId);
         let task = taskManagerClass.getTaskById(taskId);
-        console.log(task);
         task.task.status = 'done';
+        taskManagerClass.save();
+        taskManagerClass.render();
+    }
+
+    if(event.target.classList.contains('delete-button')) {
+        let taskParentElement = event.target.parentElement.parentElement.parentElement.parentElement;
+        const taskId = Number(taskParentElement.dataset.taskId);
+        taskManagerClass.deleteTask(taskId);
+        taskManagerClass.save();
         taskManagerClass.render();
     }
 });
-
 
 // let taskHTML = createTaskHtml('Add Bacon', 'This is the description', 'Lucas', '01/06/2022', 'In Progress');
 // console.log(taskHTML);
