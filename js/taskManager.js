@@ -1,3 +1,4 @@
+// Create the task html structure
 let createTaskHtml = (name, description, assignedTo, dueDate, status, descId, id) => {
 
     let listHTML = `<li class="list-group-item ${status}" data-task-id="${id}">
@@ -39,6 +40,7 @@ let createTaskHtml = (name, description, assignedTo, dueDate, status, descId, id
     return listHTML;
 };
 
+// Create a class to mange the tasks
 class TaskManager {
 
     currentId;
@@ -48,6 +50,7 @@ class TaskManager {
         this.tasks = [];
     }
 
+    // Add the task to the tasks array
     addTask(name, description, assignedTo, dueDate, status) {
         let task = {
             id: this.currentId++,
@@ -61,11 +64,9 @@ class TaskManager {
         this.tasks.push({task});
     } 
 
+    //Render the task ready to be formatted into HTML
     render() {
         let tasksHtmlList = [];
-
-        // this.tasks.map
-
         let taskNumber = this.tasks.length;
         for(let i = 0; i < taskNumber; i++ ) {
             const currentTask = this.tasks[i];
@@ -91,6 +92,7 @@ class TaskManager {
         inputAddedTask.innerHTML = tasksHtml;
     }
 
+    //Get the tasks ID
     getTaskById(taskId) {
         let foundTask;
         let taskNumber = this.tasks.length;
@@ -104,6 +106,7 @@ class TaskManager {
         return foundTask;
     }
 
+    //Save the tasks and task ID to the local storage
     save() {
         const tasksJson = JSON.stringify(this.tasks);
         localStorage.setItem("tasks", tasksJson);
@@ -111,6 +114,7 @@ class TaskManager {
         localStorage.setItem("currentId", currentId);
     }
 
+    //Load the tasks and task ID from the local storage and convert into html from string
     load() {
         if (localStorage.getItem("tasks")) {
             const tasksJson = localStorage.getItem("tasks");
@@ -123,6 +127,7 @@ class TaskManager {
         }
     }
 
+    //Remove a task from the array
     deleteTask(taskId) {
         const newTasks = [];
         let taskNumber = this.tasks.length;
@@ -135,6 +140,7 @@ class TaskManager {
                 newTasks.push(task);
             }
         }
+        //Reset the tasks array to the newly created array (without the task we want to delete)
         this.tasks = newTasks;
     }
 }
