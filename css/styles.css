@@ -91,6 +91,11 @@ div.remove {
     display: none;
 }
 
+form label {
+    color: #1d1135;
+    font-size: 24px;
+}
+
 /* Overide Bootstrap Buttons */
 
 /* primary button */
