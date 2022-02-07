@@ -145,8 +145,6 @@ taskListContainer.addEventListener('click', (event) => {
         task.task.status = 'done';
         taskManagerClass.save();
         taskManagerClass.render();
-        console.log(task.task);
-        task.classList.add("remove");
     }
 
     if(event.target.classList.contains('delete-button')) {
@@ -157,13 +155,6 @@ taskListContainer.addEventListener('click', (event) => {
         taskManagerClass.render();
     }
 });
-
-// let taskHTML = createTaskHtml('Add Bacon', 'This is the description', 'Lucas', '01/06/2022', 'In Progress');
-// console.log(taskHTML);
-// console.log(taskManagerClass.tasks);
-// taskManagerClass.addTask('Add Bacon', 'hdjgjehfjvnsnfbsnfnsnf', 'Lucas', '01/06/2022', 'In Progress');
-// taskManagerClass.addTask('Add Beef', 'poiuytrewq', 'Robert', '01/09/2022', 'Done');
-//console.log(taskManagerClass.tasks);
 
 
 

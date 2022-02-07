@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5 {
 
 h1 {
     color: #fcfbfe;
+    text-shadow: 4px 3px 0 #7A7A7A;
 }
   
 body { 
@@ -55,6 +56,10 @@ body {
     margin-bottom: 10px;
 }
 
+#submitted {
+    color: #1eba70;
+}
+
 .task-group {
     margin-top: 20px;
 }
@@ -68,6 +73,11 @@ body {
     -webkit-backdrop-filter: blur(3.8px);
     border: 1px solid rgba(12, 22, 79, 0.5);
     margin-bottom: 10px;
+}
+
+.list-group-item.done .done-button {
+    transition: all 500ms ease-out;
+    display: none;
 }
 
 .assign-task,
@@ -116,7 +126,7 @@ form label {
 }
 
 .modal .close {
-    color: #fff;
+    color: #fcfbfe;
 }
 
 /* Overide Bootstrap Buttons */
@@ -136,7 +146,7 @@ form label {
 /* success button */
 .btn-success {
     background: transparent;
-    border-color: #fff;
+    border-color: #fcfbfe;
 }
 .btn-success:hover,
 .btn-success:focus,

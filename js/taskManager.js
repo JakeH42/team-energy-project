@@ -1,6 +1,6 @@
 let createTaskHtml = (name, description, assignedTo, dueDate, status, descId, id) => {
 
-    let listHTML = `<li class="list-group-item" data-task-id="${id}">
+    let listHTML = `<li class="list-group-item ${status}" data-task-id="${id}">
         <div class="row">
             <div class="col-8">
                 <h3 class="task-title">${name}</h3>
@@ -96,7 +96,6 @@ class TaskManager {
         let taskNumber = this.tasks.length;
         for(let thisTask = 0; thisTask < taskNumber; thisTask++ ) {
             const currentTask = this.tasks[thisTask];
-            console.log('Current Task: ', currentTask);
             const currentTaskId = currentTask.task.id;
             if(taskId === currentTaskId) {
                 foundTask = currentTask;
@@ -124,13 +123,6 @@ class TaskManager {
         }
     }
 
-// In js/taskManager.js, create a deleteTask method on the TaskManager class. It should take one parameter, taskId, the id of the task we want to be deleted.
-// In the deleteTask method, create a new variable newTasks and set it to an empty array.
-// Loop over the tasks, and for each iteration:
-// Get the current task in the loop, store it in a variable task.
-// Check if task.id is not equal to the taskId passed as a parameter.
-// If the task.id is not equal to the taskId, push the task into the newTasks array.
-// Set this.tasks to newTasks.
     deleteTask(taskId) {
         const newTasks = [];
         let taskNumber = this.tasks.length;
