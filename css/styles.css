@@ -23,6 +23,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    color: #fcfbfe;
 }
 
 #top-row {
@@ -38,7 +39,6 @@ body {
 }
 
 #current-date {
-    color: #fcfbfe;
     background-color: #1d1135;
     padding: 5px;
     border-radius: 5%;
@@ -70,16 +70,21 @@ body {
     font-weight: 300;
 }
 
-.list-group-item .task-title, 
-.list-group-item .assign-task,
-.list-group-item .task-due-date,
-.list-group-item label {
-    color: #fcfbfe;
-}
-
 .card-status button {
     margin-bottom: 5px;
     margin-right: 5px;
+}
+
+.current-task-status {
+    background-color: #482a82;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.card-status .done-button {
+    margin: 10px 0;
 }
 
 div.remove {
@@ -91,7 +96,6 @@ div.remove {
 /* primary button */
 .btn-primary {
     background-color: #5643fd;
-    color: #fcfbfe;
     border-color: #2911fc;
 }
 .btn-primary:hover,
@@ -99,13 +103,11 @@ div.remove {
 .btn-primary:active    {
     background-color: #2911fc;
     border-color: #2911fc;
-    color: #fcfbfe;
 }
 
 /* success button */
 .btn-success {
     background-color: #13227b;
-    color: #fcfbfe;
     border-color: #13227b;
 }
 .btn-success:hover,
@@ -113,27 +115,23 @@ div.remove {
 .btn-success:active    {
     background-color: #10623b;
     border-color: #10623b;
-    color: #fcfbfe;
 }
 
 /* info button */
 .btn-info {
     background-color: #5016fe;
-    color: #fcfbfe;
     border-color: #3901e0;
 }
 .btn-info:hover,
 .btn-info:focus,
 .btn-info:active    {
     background-color: #3901e0;
-    color: #FFF;
     border-color: #3901e0;
 }
 
 /* danger button */
 .btn-danger {
     background-color: #8e174f;
-    color: #fcfbfe;
     border-color: #621037;
 }
 .btn-danger:hover,
@@ -141,5 +139,4 @@ div.remove {
 .btn-danger:active {
     background-color: #621037;
     border-color: #621037;
-    color: #fcfbfe;
 }

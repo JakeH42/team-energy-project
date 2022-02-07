@@ -9,7 +9,7 @@ let createTaskHtml = (name, description, assignedTo, dueDate, status, descId, id
             </div>
             <div class="col-4 card-status">
                 <div class="row">
-                    <div class="current-task-status">${status}</div>
+                    <div class="current-task-status"><strong>Status: </strong>${status}</div>
                 </div>
                 <div class="row">
                     <button type="button" class="btn btn-success btn-block done-button"><i class="bi bi-check-circle"></i> Mark as Done</button>
@@ -24,7 +24,7 @@ let createTaskHtml = (name, description, assignedTo, dueDate, status, descId, id
             <div class="col-12">
                 <p>
                     <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#${descId}" aria-expanded="false" aria-controls="collapseExample">
-                    Description <i class="bi-chevron-down"></i> 
+                        Description <i class="bi-chevron-down"></i> 
                     </button>
                 </p>
                 <div class="collapse" id="${descId}">
