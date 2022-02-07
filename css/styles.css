@@ -9,7 +9,17 @@
 */
 
 body, html {
-    height: 100%;  
+    height: 100%;
+    font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Roboto Slab', serif;
 }
 
 h1 {
@@ -93,7 +103,16 @@ div.remove {
 
 form label {
     color: #1d1135;
-    font-size: 24px;
+    font-size: 18px;
+}
+
+.modal .modal-header {
+    background-color: #13227b;
+    color: #fcfbfe;
+}
+
+.modal .close {
+    color: #fff;
 }
 
 /* Overide Bootstrap Buttons */

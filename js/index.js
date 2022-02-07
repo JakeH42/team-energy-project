@@ -17,6 +17,7 @@ const assignTo = document.querySelector('#task-assignee');
 const taskDueDate = document.querySelector('#task-due-date');
 const taskStatus = document.querySelector('#selectTaskStatus');
 const submitButton = document.querySelector('#submit-task-button');
+const resetButton = document.querySelector('#reset-form');
 
 const removeNotification = () => {
     let submittedSuccess = document.getElementById('submitted');
@@ -27,6 +28,20 @@ const removeNotificationClass = () => {
     submittedSuccess.classList.remove("remove");
     submittedSuccess.innerHTML = '';
 };
+
+const resetFields = () => {
+    taskTitle.value = '';
+    taskDesc.value = '';
+    assignTo.value = '';
+    taskDueDate.value = '';
+    taskStatus.value = '';
+    submitButton.value = '';
+    taskTitle.classList.remove("is-valid");
+    taskDesc.classList.remove("is-valid");
+    assignTo.classList.remove("is-valid");
+    taskDueDate.classList.remove("is-valid");
+    taskStatus.classList.remove("is-valid");
+}
 
 const validFormFieldInput = (data) => {
 
@@ -111,24 +126,14 @@ const validFormFieldInput = (data) => {
         submittedSuccess.innerHTML = 'Task Submitted <i class="bi bi-check-circle"></i>';
         setTimeout(removeNotification, 3000)
         setTimeout(removeNotificationClass, 6000)
-
-        taskTitle.value = '';
-        taskDesc.value = '';
-        assignTo.value = '';
-        taskDueDate.value = '';
-        taskStatus.value = '';
-        submitButton.value = '';
-        taskTitle.classList.remove("is-valid");
-        taskDesc.classList.remove("is-valid");
-        assignTo.classList.remove("is-valid");
-        taskDueDate.classList.remove("is-valid");
-        taskStatus.classList.remove("is-valid");
+        resetFields();
     } else if(numOfErrors > 0) {
         return; // Returns nothing
     }
 }
 
 submitButton.addEventListener("click", validFormFieldInput);
+resetButton.addEventListener("click", resetFields);
 
 let taskListContainer = document.querySelector('#input-added-task');
 
