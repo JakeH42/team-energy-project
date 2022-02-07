@@ -86,8 +86,8 @@ body {
 }
 
 .current-task-status {
-    background-color: #482a82;
-    padding: 5px;
+    background-color: #1d1135;
+    padding: 15px;
     border-radius: 5px;
     margin-bottom: 5px;
     text-transform: capitalize;
@@ -95,6 +95,10 @@ body {
 
 .card-status .done-button {
     margin: 10px 0;
+}
+
+.description-body {
+    background-color: #1d1135;
 }
 
 div.remove {
@@ -131,14 +135,14 @@ form label {
 
 /* success button */
 .btn-success {
-    background-color: #13227b;
-    border-color: #13227b;
+    background: transparent;
+    border-color: #fff;
 }
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active    {
-    background-color: #10623b;
-    border-color: #10623b;
+    background-color: #02bf15;
+    border-color: #02bf15;
 }
 
 /* info button */
@@ -163,4 +167,13 @@ form label {
 .btn-danger:active {
     background-color: #621037;
     border-color: #621037;
+}
+
+.btn-light {
+    background: transparent;
+    color: #fcfbfe;
+}
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
 }

@@ -28,7 +28,7 @@ let createTaskHtml = (name, description, assignedTo, dueDate, status, descId, id
                     </button>
                 </p>
                 <div class="collapse" id="${descId}">
-                    <div class="card card-body">
+                    <div class="card card-body description-body">
                         ${description}
                     </div>
                 </div>
